@@ -22,7 +22,7 @@ public class IBiologicalCollectionService implements BiologicalCollectionService
     @Override
     public Page<BiologicalCollectionResponse> getAllBiologicalPageSort(Long offSet, Long pageSize, String field) {
         return biologicalCollectionRepository
-                .findAll(PageRequest.of(offSet.intValue(), pageSize.intValue()).withSort(Sort.by(field)))
+                .findAll(PageRequest.of(offSet.intValue(), pageSize.intValue()).withSort(Sort.by(field))) //
                 .map(biologicalCollectionMapper::fromEntityToResponse);
     }
 }
