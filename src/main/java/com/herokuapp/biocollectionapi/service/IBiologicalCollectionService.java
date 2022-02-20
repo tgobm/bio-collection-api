@@ -1,7 +1,7 @@
 package com.herokuapp.biocollectionapi.service;
 
-import com.herokuapp.biocollectionapi.domain.BiologicalCollection;
 import com.herokuapp.biocollectionapi.dto.BiologicalCollectionMapper;
+import com.herokuapp.biocollectionapi.dto.BiologicalCollectionResponse;
 import com.herokuapp.biocollectionapi.repository.BiologicalCollectionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,7 +20,9 @@ public class IBiologicalCollectionService implements BiologicalCollectionService
     private final BiologicalCollectionRepository biologicalCollectionRepository;
 
     @Override
-    public Page<BiologicalCollection> getAllBiologicalPageSort(Long offSet, Long pageSize, String field) {
-        return biologicalCollectionRepository.findAll(PageRequest.of(offSet.intValue(), pageSize.intValue()).withSort(Sort.by(field)));
+    public Page<BiologicalCollectionResponse> getAllBiologicalPageSort(Long offSet, Long pageSize, String field) {
+        return biologicalCollectionRepository
+                .findAll(PageRequest.of(offSet.intValue(), pageSize.intValue()).withSort(Sort.by(field)))
+                .map(biologicalCollectionMapper::fromEntityToResponse);
     }
 }

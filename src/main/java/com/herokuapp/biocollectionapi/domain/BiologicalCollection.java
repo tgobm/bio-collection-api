@@ -2,7 +2,6 @@ package com.herokuapp.biocollectionapi.domain;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +12,6 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
-@Builder
 @Entity
 @Data
 @AllArgsConstructor
@@ -60,7 +58,7 @@ public class BiologicalCollection {
     private String locality;
 
     @Schema(description = "represents the type of material specification")
-    private String bioType;
+    private String espMatType;
 
     @Schema(description = "represents the condition of the material")
     private String condition;

@@ -1,6 +1,6 @@
 package com.herokuapp.biocollectionapi.resource;
 
-import com.herokuapp.biocollectionapi.domain.BiologicalCollection;
+import com.herokuapp.biocollectionapi.dto.BiologicalCollectionResponse;
 import com.herokuapp.biocollectionapi.service.BiologicalCollectionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -20,7 +20,7 @@ public class BiologicalCollectionResource implements BiologicalCollectionApi {
     private final BiologicalCollectionService biologicalCollectionService;
 
     @GetMapping
-    public ResponseEntity<Page<BiologicalCollection>> getAllBiologicalCollection(@RequestParam Long offSet, @RequestParam Long pageSize, @RequestParam String field) {
+    public ResponseEntity<Page<BiologicalCollectionResponse>> getAllBiologicalCollection(@RequestParam Long offSet, @RequestParam Long pageSize, @RequestParam String field) {
         return ResponseEntity.ok(biologicalCollectionService.getAllBiologicalPageSort(offSet, pageSize, field));
     }
 }

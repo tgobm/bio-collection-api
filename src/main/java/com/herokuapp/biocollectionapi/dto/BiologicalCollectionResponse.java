@@ -30,7 +30,7 @@ public class BiologicalCollectionResponse implements Serializable {
 
     private String locality;
 
-    private String bioType;
+    private String espMatType;
 
     private String condition;
 
