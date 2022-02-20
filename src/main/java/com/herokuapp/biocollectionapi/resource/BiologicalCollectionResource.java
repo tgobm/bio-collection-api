@@ -20,7 +20,7 @@ public class BiologicalCollectionResource {
     private final BiologicalCollectionService biologicalCollectionService;
 
     @GetMapping
-    private ResponseEntity<Page<BiologicalCollection>> getAllBiologicalPageable(@RequestParam int offSet, @RequestParam int pageSize) {
-        return ResponseEntity.ok(biologicalCollectionService.getAllBiologicalPageable(offSet, pageSize));
+    private ResponseEntity<Page<BiologicalCollection>> getAllBiologicalCollection(@RequestParam Long offSet, @RequestParam Long pageSize, @RequestParam String field) {
+        return ResponseEntity.ok(biologicalCollectionService.getAllBiologicalPageSort(offSet, pageSize, field));
     }
 }

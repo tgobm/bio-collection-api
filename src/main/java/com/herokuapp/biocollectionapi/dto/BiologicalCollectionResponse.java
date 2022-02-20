@@ -1,28 +1,14 @@
-package com.herokuapp.biocollectionapi.domain;
+package com.herokuapp.biocollectionapi.dto;
 
-import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
-import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import java.io.Serializable;
 import java.time.LocalDate;
 
 @Builder
-@Entity
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Table(name = "biological_collection")
-public class BiologicalCollection {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+public class BiologicalCollectionResponse implements Serializable {
 
     private String tombo;
 

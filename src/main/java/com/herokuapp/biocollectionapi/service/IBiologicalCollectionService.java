@@ -1,10 +1,12 @@
 package com.herokuapp.biocollectionapi.service;
 
 import com.herokuapp.biocollectionapi.domain.BiologicalCollection;
+import com.herokuapp.biocollectionapi.dto.BiologicalCollectionMapper;
 import com.herokuapp.biocollectionapi.repository.BiologicalCollectionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,10 +15,12 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional(rollbackFor = Exception.class)
 public class IBiologicalCollectionService implements BiologicalCollectionService {
 
+    private final BiologicalCollectionMapper biologicalCollectionMapper;
+
     private final BiologicalCollectionRepository biologicalCollectionRepository;
 
     @Override
-    public Page<BiologicalCollection> getAllBiologicalPageable(int offSet, int pageSize) {
-        return biologicalCollectionRepository.findAll(PageRequest.of(offSet, pageSize));
+    public Page<BiologicalCollection> getAllBiologicalPageSort(Long offSet, Long pageSize, String field) {
+        return biologicalCollectionRepository.findAll(PageRequest.of(offSet.intValue(), pageSize.intValue()).withSort(Sort.by(field)));
     }
 }
