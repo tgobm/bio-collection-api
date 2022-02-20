@@ -15,12 +15,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/biological-collections")
 @CrossOrigin
 @RequiredArgsConstructor
-public class BiologicalCollectionResource {
+public class BiologicalCollectionResource implements BiologicalCollectionApi {
 
     private final BiologicalCollectionService biologicalCollectionService;
 
     @GetMapping
-    private ResponseEntity<Page<BiologicalCollection>> getAllBiologicalCollection(@RequestParam Long offSet, @RequestParam Long pageSize, @RequestParam String field) {
+    public ResponseEntity<Page<BiologicalCollection>> getAllBiologicalCollection(@RequestParam Long offSet, @RequestParam Long pageSize, @RequestParam String field) {
         return ResponseEntity.ok(biologicalCollectionService.getAllBiologicalPageSort(offSet, pageSize, field));
     }
 }
