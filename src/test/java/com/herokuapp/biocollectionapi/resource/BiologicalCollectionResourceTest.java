@@ -34,12 +34,17 @@ class BiologicalCollectionResourceTest {
                 .thenReturn(new PageImpl<>(new ArrayList<>()));
         MockHttpServletRequestBuilder paramResult = MockMvcRequestBuilders.get("/api/biological-collections")
                 .param("field", "foo");
-        MockHttpServletRequestBuilder paramResult1 = paramResult.param("offSet", String.valueOf(1L));
+        MockHttpServletRequestBuilder paramResult1 = paramResult.param("pageNumber", String.valueOf(1L));
         MockHttpServletRequestBuilder requestBuilder = paramResult1.param("pageSize", String.valueOf(1L));
         MockMvcBuilders.standaloneSetup(this.biologicalCollectionResource)
                 .build()
                 .perform(requestBuilder)
                 .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.content().contentType("application/json"));
+                .andExpect(MockMvcResultMatchers.content().contentType("application/json"))
+                .andExpect(MockMvcResultMatchers.content()
+                        .string(
+                                "{\"content\":[],\"pageable\":\"INSTANCE\",\"last\":true,\"totalPages\":1,\"totalElements\":0,\"size\":0,\"number"
+                                        + "\":0,\"sort\":{\"empty\":true,\"sorted\":false,\"unsorted\":true},\"first\":true,\"numberOfElements\":0,\"empty"
+                                        + "\":true}"));
     }
 }

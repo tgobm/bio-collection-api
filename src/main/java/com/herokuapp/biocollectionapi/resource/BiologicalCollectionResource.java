@@ -21,7 +21,7 @@ public class BiologicalCollectionResource implements BiologicalCollectionApi {
 
     @Override
     @GetMapping
-    public ResponseEntity<Page<BiologicalCollectionResponse>> getAllBiologicalCollection(@RequestParam Long offSet, @RequestParam Long pageSize, @RequestParam String field) {
-        return ResponseEntity.ok(biologicalCollectionService.getAllBiologicalPageSort(offSet, pageSize, field));
+    public ResponseEntity<Page<BiologicalCollectionResponse>> getAllBiologicalCollection(@RequestParam Long pageNumber, @RequestParam Long pageSize, @RequestParam(defaultValue = "id", required = false) String field) {
+        return ResponseEntity.ok(biologicalCollectionService.getAllBiologicalPageSort(pageNumber, pageSize, field));
     }
 }

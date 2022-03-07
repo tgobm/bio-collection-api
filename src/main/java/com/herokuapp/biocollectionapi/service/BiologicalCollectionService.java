@@ -5,5 +5,5 @@ import org.springframework.data.domain.Page;
 
 public interface BiologicalCollectionService {
 
-    Page<BiologicalCollectionResponse> getAllBiologicalPageSort(Long offSet, Long pageSize, String field);
+    Page<BiologicalCollectionResponse> getAllBiologicalPageSort(Long pageNumber, Long pageSize, String field);
 }

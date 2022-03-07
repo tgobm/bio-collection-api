@@ -12,8 +12,8 @@ public interface BiologicalCollectionApi {
 
     @Operation(description = "List all biological collection paginated and sorting", operationId = "getAllBiologicalCollection", summary = "By passing the appropriate options, you can search the collections")
     ResponseEntity<Page<BiologicalCollectionResponse>> getAllBiologicalCollection(
-            @Parameter(description = "the number of records that need to be skipped")
-                    Long offSet,
+            @Parameter(description = "page number")
+                    Long pageNumber,
             @Parameter(description = "maximum number of records returned")
                     Long pageSize,
             @Parameter(description = "field to sort by")

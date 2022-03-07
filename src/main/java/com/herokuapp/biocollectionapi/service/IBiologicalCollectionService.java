@@ -20,9 +20,9 @@ public class IBiologicalCollectionService implements BiologicalCollectionService
     private final BiologicalCollectionRepository biologicalCollectionRepository;
 
     @Override
-    public Page<BiologicalCollectionResponse> getAllBiologicalPageSort(Long offSet, Long pageSize, String field) {
+    public Page<BiologicalCollectionResponse> getAllBiologicalPageSort(Long pageNumber, Long pageSize, String field) {
         return biologicalCollectionRepository
-                .findAll(PageRequest.of(offSet.intValue(), pageSize.intValue()).withSort(Sort.by(field))) //
+                .findAll(PageRequest.of(pageNumber.intValue() - 1, pageSize.intValue()).withSort(Sort.by(field))) //
                 .map(biologicalCollectionMapper::fromEntityToResponse);
     }
 }
